@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -46,13 +47,19 @@ public class StreamApi {
 				.min(Comparator.comparing(Integer::intValue))
 				.orElse(null);
 		System.out.println("Min Value: "+min);
-		
-//		OR
+
+		//		OR
 		Integer min1 = myNumberList.stream()
 				.filter(isEvenFunction)
 				.min((n1,n2)->n1-n2)
 				.orElse(null);
 		System.out.println("Min Value: "+min1);
-		
+
+		//find Sum  and Average of Number
+		Optional<Integer> sum = myNumberList.stream().reduce(Integer::sum);
+		long count = myNumberList.stream().count();
+		System.out.println("Sum : "+sum);
+		System.out.println("Count:"+count);
+
 	}
 }
