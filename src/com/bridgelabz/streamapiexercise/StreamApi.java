@@ -60,12 +60,18 @@ public class StreamApi {
 		long count = myNumberList.stream().count();
 		System.out.println("Sum : "+sum);
 		System.out.println("Count:"+count);
-		
-//		checking all even ,single even and none are divisible by 6;
+
+		//checking all even ,single even and none are divisible by 6;
 		boolean allEven = myNumberList.stream().allMatch(isEvenFunction);
 		boolean oneEven = myNumberList.stream().anyMatch(isEvenFunction);
 		boolean noneMultiOfSix = myNumberList.stream().noneMatch(i->i>0 && i%6==0);
-		
+
 		System.out.println("AllEven:"+allEven+" OneEven:"+oneEven+" noneMultiOfSix: "+noneMultiOfSix);
+		
+		//Sorting number in ascending order
+		List<Integer> sortList = myNumberList.stream()
+				.sorted((n1,n2)->n2.compareTo(n1))
+				.collect(Collectors.toList());
+		System.out.println("SortedList: "+sortList);
 	}
 }
